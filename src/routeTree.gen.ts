@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AguaRouteImport } from './routes/agua'
+import { Route as ChamadosRouteImport } from './routes/chamados'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as ControleRouteImport } from './routes/controle'
+import { Route as IrrigacaoRouteImport } from './routes/irrigacao'
+import { Route as ManutencaoRouteImport } from './routes/manutencao'
+import { Route as MonitoramentoRouteImport } from './routes/monitoramento'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AguaRoute = AguaRouteImport.update({
+  id: '/agua',
+  path: '/agua',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChamadosRoute = ChamadosRouteImport.update({
+  id: '/chamados',
+  path: '/chamados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ControleRoute = ControleRouteImport.update({
+  id: '/controle',
+  path: '/controle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IrrigacaoRoute = IrrigacaoRouteImport.update({
+  id: '/irrigacao',
+  path: '/irrigacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManutencaoRoute = ManutencaoRouteImport.update({
+  id: '/manutencao',
+  path: '/manutencao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonitoramentoRoute = MonitoramentoRouteImport.update({
+  id: '/monitoramento',
+  path: '/monitoramento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agua': typeof AguaRoute
+  '/chamados': typeof ChamadosRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/controle': typeof ControleRoute
+  '/irrigacao': typeof IrrigacaoRoute
+  '/manutencao': typeof ManutencaoRoute
+  '/monitoramento': typeof MonitoramentoRoute
+  '/relatorios': typeof RelatoriosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agua': typeof AguaRoute
+  '/chamados': typeof ChamadosRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/controle': typeof ControleRoute
+  '/irrigacao': typeof IrrigacaoRoute
+  '/manutencao': typeof ManutencaoRoute
+  '/monitoramento': typeof MonitoramentoRoute
+  '/relatorios': typeof RelatoriosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agua': typeof AguaRoute
+  '/chamados': typeof ChamadosRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/controle': typeof ControleRoute
+  '/irrigacao': typeof IrrigacaoRoute
+  '/manutencao': typeof ManutencaoRoute
+  '/monitoramento': typeof MonitoramentoRoute
+  '/relatorios': typeof RelatoriosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agua'
+    | '/chamados'
+    | '/configuracoes'
+    | '/controle'
+    | '/irrigacao'
+    | '/manutencao'
+    | '/monitoramento'
+    | '/relatorios'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agua'
+    | '/chamados'
+    | '/configuracoes'
+    | '/controle'
+    | '/irrigacao'
+    | '/manutencao'
+    | '/monitoramento'
+    | '/relatorios'
+  id:
+    | '__root__'
+    | '/'
+    | '/agua'
+    | '/chamados'
+    | '/configuracoes'
+    | '/controle'
+    | '/irrigacao'
+    | '/manutencao'
+    | '/monitoramento'
+    | '/relatorios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AguaRoute: typeof AguaRoute
+  ChamadosRoute: typeof ChamadosRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  ControleRoute: typeof ControleRoute
+  IrrigacaoRoute: typeof IrrigacaoRoute
+  ManutencaoRoute: typeof ManutencaoRoute
+  MonitoramentoRoute: typeof MonitoramentoRoute
+  RelatoriosRoute: typeof RelatoriosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agua': {
+      id: '/agua'
+      path: '/agua'
+      fullPath: '/agua'
+      preLoaderRoute: typeof AguaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chamados': {
+      id: '/chamados'
+      path: '/chamados'
+      fullPath: '/chamados'
+      preLoaderRoute: typeof ChamadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/controle': {
+      id: '/controle'
+      path: '/controle'
+      fullPath: '/controle'
+      preLoaderRoute: typeof ControleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/irrigacao': {
+      id: '/irrigacao'
+      path: '/irrigacao'
+      fullPath: '/irrigacao'
+      preLoaderRoute: typeof IrrigacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manutencao': {
+      id: '/manutencao'
+      path: '/manutencao'
+      fullPath: '/manutencao'
+      preLoaderRoute: typeof ManutencaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monitoramento': {
+      id: '/monitoramento'
+      path: '/monitoramento'
+      fullPath: '/monitoramento'
+      preLoaderRoute: typeof MonitoramentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AguaRoute: AguaRoute,
+  ChamadosRoute: ChamadosRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  ControleRoute: ControleRoute,
+  IrrigacaoRoute: IrrigacaoRoute,
+  ManutencaoRoute: ManutencaoRoute,
+  MonitoramentoRoute: MonitoramentoRoute,
+  RelatoriosRoute: RelatoriosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
