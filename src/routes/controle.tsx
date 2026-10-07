@@ -5,6 +5,8 @@ import { PagePlaceholder } from "@/components/layout/PagePlaceholder";
 export const Route = createFileRoute("/controle")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Controle · AgroTech" },
       { name: "description", content: "Acionamento remoto de bombas, válvulas e equipamentos." },
       { property: "og:title", content: "Controle · AgroTech" },

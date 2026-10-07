@@ -1,25 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Sprout } from "lucide-react";
-import { PagePlaceholder } from "@/components/layout/PagePlaceholder";
+import { IrrigationControls } from "@/components/dashboard/FarmControls";
 
 export const Route = createFileRoute("/irrigacao")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Irrigação · AgroTech" },
-      { name: "description", content: "Programação e status dos setores de irrigação." },
+      { name: "description", content: "Controle do sistema de irrigação e da bomba." },
       { property: "og:title", content: "Irrigação · AgroTech" },
-      { property: "og:description", content: "Programação e status dos setores de irrigação." },
+      { property: "og:description", content: "Controle do sistema de irrigação e da bomba." },
     ],
   }),
   component: Page,
 });
 
 function Page() {
-  return (
-    <PagePlaceholder
-      title="Irrigação"
-      description="Programação e status dos setores de irrigação."
-      icon={<Sprout className="size-7" />}
-    />
-  );
+  return <div className="flex flex-col gap-5"><h1 className="text-2xl font-bold">Irrigação</h1><IrrigationControls /></div>;
 }

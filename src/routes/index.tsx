@@ -2,10 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Bell, Sun } from "lucide-react";
 import heroImage from "@/assets/farm-hero.jpg";
 import {
-  ActivityPanel,
   AlertsPanel,
-  IrrigationPanel,
-  StatCards,
+  SoilPanel,
   TankLevelsPanel,
   TicketsPanel,
   WaterPanel,
@@ -14,6 +12,8 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Início · AgroTech Fazenda Inteligente" },
       {
         name: "description",
@@ -77,10 +77,9 @@ function Index() {
 
       <div className="grid gap-4 xl:grid-cols-[1fr_26rem]">
         <div className="flex flex-col gap-4">
-          <StatCards />
           <div className="grid gap-4 lg:grid-cols-[1.55fr_1fr]">
             <WaterPanel />
-            <IrrigationPanel />
+            <SoilPanel />
           </div>
           <div className="grid gap-4 lg:grid-cols-[1fr_1.2fr]">
             <TankLevelsPanel />
@@ -90,7 +89,7 @@ function Index() {
 
         <div className="flex flex-col gap-4">
           <AlertsPanel />
-          <ActivityPanel />
+          <AlertsPanel title="Histórico de Alertas" />
         </div>
       </div>
     </div>
