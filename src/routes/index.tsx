@@ -45,7 +45,7 @@ function Index() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/50 to-transparent" />
           <div className="relative p-7">
-            <h1 className="text-2xl font-bold tracking-tight">Olá, Bryan!</h1>
+            <h1 className="text-2xl font-bold tracking-tight">Painel de Controle</h1>
             <p className="mt-1 max-w-md text-sm text-foreground/80">
               Aqui você acompanha o funcionamento do sistema e o status da sua propriedade.
             </p>
