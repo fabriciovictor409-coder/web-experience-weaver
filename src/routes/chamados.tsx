@@ -5,6 +5,8 @@ import { PagePlaceholder } from "@/components/layout/PagePlaceholder";
 export const Route = createFileRoute("/chamados")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Chamados · AgroTech" },
       { name: "description", content: "Abertura e acompanhamento de chamados técnicos da fazenda." },
       { property: "og:title", content: "Chamados · AgroTech" },

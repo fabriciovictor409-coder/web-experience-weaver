@@ -15,6 +15,7 @@ import {
   Filter,
   Waves,
   Wifi,
+  Thermometer,
 } from "lucide-react";
 import { Panel, PanelHeader, Pill, StatusText, type Tone } from "./primitives";
 import { TankChart } from "./TankChart";
@@ -100,7 +101,7 @@ const equipment = [
 export function WaterPanel() {
   return (
     <Panel>
-      <PanelHeader icon={<Droplet className="size-[18px]" />} title="Monitoramento da Água" />
+      <PanelHeader icon={<Droplet className="size-[18px]" />} title="Monitoramento das Caixas de Água" />
       <div className="grid gap-4 lg:grid-cols-[1fr_1fr_1.1fr]">
         {tanks.map((t) => (
           <div key={t.name} className="panel-inset p-4">
@@ -241,41 +242,37 @@ const tickets = [
 ];
 
 export function TicketsPanel() {
+  return <ActivityPanel title="Histórico de Atividades Recentes" />;
+}
+
+export function SoilPanel() {
   return (
     <Panel>
-      <PanelHeader
-        icon={<Ticket className="size-[18px]" />}
-        title="Últimos Chamados"
-        action={
-          <button className="text-xs font-semibold text-info hover:underline">Ver todos</button>
-        }
-      />
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="text-left text-xs text-muted-foreground">
-            <th className="pb-2 font-medium">Protocolo</th>
-            <th className="pb-2 font-medium">Categoria</th>
-            <th className="pb-2 font-medium">Status</th>
-            <th className="pb-2 font-medium">Prioridade</th>
-            <th className="pb-2 font-medium">Data</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tickets.map((t) => (
-            <tr key={t.id} className="border-t border-border/70">
-              <td className="py-2.5 font-medium">{t.id}</td>
-              <td className="py-2.5 text-muted-foreground">{t.category}</td>
-              <td className="py-2.5">
-                <Pill tone={t.status.tone}>{t.status.label}</Pill>
-              </td>
-              <td className="py-2.5">
-                <Pill tone={t.priority.tone}>{t.priority.label}</Pill>
-              </td>
-              <td className="py-2.5 text-muted-foreground">{t.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <PanelHeader icon={<Sprout className="size-[18px]" />} title="Monitoramento do Solo" />
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="border-b border-border pb-4 sm:border-b-0 sm:border-r sm:pb-0 sm:pr-4">
+          <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground"><Thermometer className="size-5 text-warning" />Temperatura do Solo</div>
+          <p className="text-3xl font-bold">26<span className="ml-1 text-lg text-muted-foreground">°C</span></p>
+          <div className="mt-3"><StatusText tone="success">Adequada</StatusText></div>
+        </div>
+        <div>
+          <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground"><Droplet className="size-5 text-water" />Sensor de Umidade do Solo</div>
+          <p className="text-3xl font-bold">62<span className="ml-1 text-lg text-muted-foreground">%</span></p>
+          <div className="mt-3"><StatusText tone="success">Adequada</StatusText></div>
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+export function WaterQualityPanel() {
+  return (
+    <Panel>
+      <PanelHeader icon={<Droplets className="size-5" />} title="Qualidade da Água" />
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div><p className="text-sm text-muted-foreground">Temperatura da Água</p><p className="mt-2 text-3xl font-bold">24 <span className="text-lg text-muted-foreground">°C</span></p></div>
+        <div><p className="text-sm text-muted-foreground">pH da Água</p><p className="mt-2 text-3xl font-bold">6,8 <span className="text-lg text-muted-foreground">pH</span></p></div>
+      </div>
     </Panel>
   );
 }
@@ -298,15 +295,12 @@ const toneBg: Record<Tone, string> = {
   muted: "bg-muted-foreground",
 };
 
-export function AlertsPanel() {
+export function AlertsPanel({ title = "Alertas Recentes" }: { title?: string }) {
   return (
     <Panel>
       <PanelHeader
         icon={<Bell className="size-[18px]" />}
-        title="Alertas Recentes"
-        action={
-          <button className="text-xs font-semibold text-info hover:underline">Ver todos</button>
-        }
+        title={title}
       />
       <ul className="relative flex flex-col gap-4 pl-1">
         {alerts.map((a) => (
@@ -349,10 +343,10 @@ const activities = [
   { icon: Waves, text: "Bomba submersa ligada", time: "Há 3 horas", tone: "success" as Tone },
 ];
 
-export function ActivityPanel() {
+export function ActivityPanel({ title = "Histórico de Atividades Recentes" }: { title?: string }) {
   return (
     <Panel>
-      <PanelHeader icon={<Activity className="size-[18px]" />} title="Atividades Recentes" />
+      <PanelHeader icon={<Activity className="size-[18px]" />} title={title} />
       <ul className="relative flex flex-col gap-4 border-l border-border pl-5">
         {activities.map((a) => (
           <li key={a.text} className="relative flex items-center gap-3">

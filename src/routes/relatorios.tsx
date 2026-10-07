@@ -5,6 +5,8 @@ import { PagePlaceholder } from "@/components/layout/PagePlaceholder";
 export const Route = createFileRoute("/relatorios")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Relatórios · AgroTech" },
       { name: "description", content: "Relatórios de consumo, chamados e desempenho do sistema." },
       { property: "og:title", content: "Relatórios · AgroTech" },

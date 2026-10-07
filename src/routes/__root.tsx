@@ -6,11 +6,13 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { FarmProvider } from "@/components/dashboard/FarmControls";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 
 
@@ -36,7 +38,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -132,6 +134,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <FarmProvider>
       <div className="flex min-h-screen bg-background">
         <AppSidebar />
         <main className="flex-1 overflow-x-hidden p-4">
@@ -139,6 +142,7 @@ function RootComponent() {
           <Outlet />
         </main>
       </div>
+      </FarmProvider>
     </QueryClientProvider>
   );
 }
