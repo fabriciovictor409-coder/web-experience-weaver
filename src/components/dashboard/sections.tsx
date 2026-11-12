@@ -281,8 +281,7 @@ export function WaterQualityPanel() {
   return (
     <Panel>
       <PanelHeader icon={<Droplets className="size-5" />} title="Qualidade da Água" />
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div><p className="text-sm text-muted-foreground">Temperatura média da água</p><p className="mt-2 text-3xl font-bold">23,7 <span className="text-lg text-muted-foreground">°C</span></p></div>
+      <div>
         <div><p className="text-sm text-muted-foreground">pH da Água</p><p className="mt-2 text-3xl font-bold">6,8 <span className="text-lg text-muted-foreground">pH</span></p></div>
       </div>
     </Panel>
