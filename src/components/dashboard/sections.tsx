@@ -118,17 +118,7 @@ export function WaterPanel() {
             <div className="mt-4 h-2 overflow-hidden rounded-full bg-muted">
               <div className={`h-full rounded-full ${t.bar}`} style={{ width: `${t.level}%` }} />
             </div>
-            <div className="mt-3 flex items-end justify-between gap-3">
-              <div>
-                <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Temperatura da água</p>
-                <p className="mt-1 flex items-center gap-1.5 text-lg font-bold tracking-tight">
-                  <Thermometer className="size-4 text-warning" />
-                  {t.temp}
-                  <span className="text-sm font-medium text-muted-foreground">°C</span>
-                </p>
-              </div>
-              <p className="text-xs text-muted-foreground">Capacidade: {t.capacity}</p>
-            </div>
+            <p className="mt-3 text-xs text-muted-foreground">Capacidade: {t.capacity}</p>
             <div className="mt-3">
               <Pill tone={t.status.tone}>{t.status.label}</Pill>
             </div>
