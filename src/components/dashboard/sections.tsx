@@ -94,7 +94,6 @@ const tanks = [
 ];
 
 const equipment = [
-  { icon: Waves, name: "Bomba Submersa", state: "Ligada", tone: "success" as Tone },
   { icon: Waves, name: "Bomba Externa", state: "Ligada", tone: "success" as Tone },
   { icon: CloudRain, name: "Captação de Chuva", state: "Ativa", tone: "success" as Tone },
   { icon: Filter, name: "Filtro", state: "Funcionando", tone: "success" as Tone },
@@ -351,7 +350,6 @@ const activities = [
     time: "Há 2 horas",
     tone: "success" as Tone,
   },
-  { icon: Waves, text: "Bomba submersa ligada", time: "Há 3 horas", tone: "success" as Tone },
 ];
 
 export function ActivityPanel({ title = "Histórico de Atividades Recentes" }: { title?: string }) {
