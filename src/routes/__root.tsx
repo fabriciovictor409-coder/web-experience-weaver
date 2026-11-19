@@ -137,7 +137,7 @@ function RootComponent() {
       <FarmProvider>
       <div className="flex min-h-screen bg-background">
         <AppSidebar />
-        <main className="flex-1 overflow-x-hidden p-4">
+        <main className="flex-1 overflow-x-hidden p-4 pt-16 md:pt-4">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
