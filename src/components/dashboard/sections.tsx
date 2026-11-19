@@ -18,6 +18,7 @@ import {
   Thermometer,
 } from "lucide-react";
 import { Panel, PanelHeader, Pill, StatusText, type Tone } from "./primitives";
+import { SensorGauge } from "./SensorGauge";
 import { TankChart } from "./TankChart";
 
 /* ---------------- Stat cards ---------------- */
@@ -258,8 +259,32 @@ export function SoilPanel() {
         </div>
         <div>
           <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground"><Droplet className="size-5 text-water" />Sensor de Umidade do Solo</div>
-          <p className="text-3xl font-bold">62<span className="ml-1 text-lg text-muted-foreground">%</span></p>
-          <div className="mt-3"><StatusText tone="success">Adequada</StatusText></div>
+          <SensorGauge
+            value={62}
+            min={0}
+            max={100}
+            unit="%"
+            jitter={1.5}
+            format={(v) => String(Math.round(v))}
+            zones={[
+              { until: 35, className: "stroke-destructive" },
+              { until: 45, className: "stroke-warning" },
+              { until: 75, className: "stroke-success" },
+              { until: 90, className: "stroke-warning" },
+              { until: 100, className: "stroke-destructive" },
+            ]}
+            statusLabel={(v) =>
+              v < 35
+                ? { label: "Seco", tone: "destructive" }
+                : v < 45
+                  ? { label: "Baixa", tone: "warning" }
+                  : v <= 75
+                    ? { label: "Adequada", tone: "success" }
+                    : v <= 90
+                      ? { label: "Alta", tone: "warning" }
+                      : { label: "Encharcado", tone: "destructive" }
+            }
+          />
         </div>
       </div>
     </Panel>
@@ -271,7 +296,32 @@ export function WaterQualityPanel() {
     <Panel>
       <PanelHeader icon={<Droplets className="size-5" />} title="Qualidade da Água" />
       <div>
-        <div><p className="text-sm text-muted-foreground">pH da Água</p><p className="mt-2 text-3xl font-bold">6,8 <span className="text-lg text-muted-foreground">pH</span></p></div>
+        <p className="mb-3 text-sm text-muted-foreground">pH da Água</p>
+        <SensorGauge
+          value={6.8}
+          min={4}
+          max={10}
+          unit="pH"
+          jitter={0.1}
+          zones={[
+            { until: 5.5, className: "stroke-destructive" },
+            { until: 6, className: "stroke-warning" },
+            { until: 7.5, className: "stroke-success" },
+            { until: 8.5, className: "stroke-warning" },
+            { until: 10, className: "stroke-destructive" },
+          ]}
+          statusLabel={(v) =>
+            v < 5.5
+              ? { label: "Ácida demais", tone: "destructive" }
+              : v < 6
+                ? { label: "Levemente ácida", tone: "warning" }
+                : v <= 7.5
+                  ? { label: "Adequado", tone: "success" }
+                  : v <= 8.5
+                    ? { label: "Levemente alcalina", tone: "warning" }
+                    : { label: "Alcalina demais", tone: "destructive" }
+          }
+        />
       </div>
     </Panel>
   );
